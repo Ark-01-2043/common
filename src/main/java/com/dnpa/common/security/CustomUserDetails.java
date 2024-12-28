@@ -1,5 +1,6 @@
 package com.dnpa.common.security;
 
+import com.dnpa.common.enums.AccountRole;
 import com.dnpa.common.enums.AccountStatus;
 import com.dnpa.common.util.DateTimeUtil;
 import lombok.Builder;
@@ -17,7 +18,7 @@ import java.util.List;
 @Builder
 public class CustomUserDetails implements Serializable, UserDetails {
     private Long userId = 0L;
-    private String userCode = "";
+    private String userCode;
     private String userName = "";
     private String fullName = "";
     private String email = "";
@@ -26,7 +27,7 @@ public class CustomUserDetails implements Serializable, UserDetails {
     private String endDate = null;
     private String startBanDate = null;
     private String endBanDate = null;
-    private List<Integer> roles;
+    private List<AccountRole> roles;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.emptyList();
@@ -62,6 +63,25 @@ public class CustomUserDetails implements Serializable, UserDetails {
     public boolean isEnabled() {
         return isAccountNonExpired() && isAccountNonLocked();
     }
-
-
+    public boolean isBanned() {
+        return status == AccountStatus.BANNED;
+    }
+    public boolean isInactive() {
+        return status == AccountStatus.INACTIVE;
+    }
+    public boolean isActive() {
+        return status == AccountStatus.ACTIVE;
+    }
+    public boolean haveRole(AccountRole role){
+        return roles.contains(role);
+    }
+    public boolean isAdmin() {
+        return haveRole(AccountRole.ADMIN);
+    }
+    public boolean isUser() {
+        return haveRole(AccountRole.USER);
+    }
+    public boolean isManager() {
+        return haveRole(AccountRole.MANAGER);
+    }
 }

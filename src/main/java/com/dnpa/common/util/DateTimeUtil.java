@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 @Component
 public class DateTimeUtil {
-    public static final String DATE_yyyyMMdd_PATTERN = "yyyy/MM/dd";
+    public static final String DATE_yyyyMMdd_PATTERN = "yyyy-MM-dd";
     public static final String TIMESTAMP_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX";
     public static boolean isPastDate(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_yyyyMMdd_PATTERN);
