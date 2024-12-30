@@ -20,28 +20,21 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long updateCount = 0L;
+    private Long updateCount;
     @Column(unique = true)
-    private String userCode = "";
+    private String userCode;
     @Column(unique = true)
-    private String userName = "";
-    private String password = "";
-    private String fullName = "";
+    private String userName;
+    private String password;
+    private String fullName;
     @Column(unique = true)
-    private String email = "";
-    private int status = AccountConst.ACTIVE_ACCOUNT_INT;
-    private Date startDate = null;
-    private Date endDate = null;
-    private Date startBanDate = null;
-    private Date endBanDate = null;
+    private String email;
+    private int status;
+    private Date startDate;
+    private Date endDate;
+    private Date startBanDate;
+    private Date endBanDate;
     @OneToMany(targetEntity = AccountRole.class, cascade = CascadeType.ALL, mappedBy = "account")
     private List<AccountRole> roles;
-    public boolean isAdmin(){
-        Hibernate.initialize(this.getRoles());
-        return this.getRoles().stream().filter(e -> AccountRole.ROLE_ADMIN == e.getRoleId() && AccountRole.ACTIVE == e.getStatus()).count() > 0;
-    }
-    public boolean isUser(){
-        Hibernate.initialize(this.getRoles());
-        return this.getRoles().stream().filter(e -> AccountRole.ROLE_USER == e.getRoleId() && AccountRole.ACTIVE == e.getStatus()).count() > 0;
-    }
+
 }

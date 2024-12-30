@@ -12,8 +12,5 @@ public class AccountConst {
     public static final Long SUPER_USER_ID = 0L;
     public static final String SUPER_USER_NAME = "SUPER USER";
     public static final String SUPER_USER_EMAIL = "anh12310b1111@gmail.com";
-    public static final String SUPER_USER_NAME = "";
-    public static final String SUPER_USER_NAME = "";
-    public static final String SUPER_USER_NAME = "";
-    public static final String SUPER_USER_NAME = "";
+
 }
