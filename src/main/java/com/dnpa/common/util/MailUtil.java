@@ -20,17 +20,17 @@ import java.util.Map;
 import java.util.Properties;
 @Component
 public class MailUtil {
-    @Value("${mail.enable:#{true}}")
+    @Value("${app.mail.enable:#{true}}")
     private boolean emailEnabled;
-    @Value("${mail.smtp.host:#{'smtp.gmail.com'}}")
+    @Value("${app.mail.smtp.host:#{'smtp.gmail.com'}}")
     private String smtpHost;
-    @Value("${mail.smtp.port:#{587}}")
+    @Value("${app.mail.smtp.port:#{587}}")
     private int smtpPort;
-    @Value("${mail.smtp.auth:#{true}}")
+    @Value("${app.mail.smtp.auth:#{true}}")
     private boolean smtpAuth;
-    @Value("${mail.smtp.user:#{'email@gmail.com'}}")
+    @Value("${app.mail.smtp.user:#{'email@gmail.com'}}")
     private String smtpUser;
-    @Value("${mail.smtp.password:#{'password'}}")
+    @Value("${app.mail.smtp.password:#{'password'}}")
     private String smtpPassword;
     private Authenticator getSmtpAuthenticator() {
         return new Authenticator() {
