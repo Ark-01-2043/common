@@ -28,11 +28,8 @@ public class ApiLoggingFilter extends OncePerRequestFilter {
         BufferedRequestWrapper bufferedRequest = new BufferedRequestWrapper(request);
         BufferedResponseWrapper bufferedResponse = new BufferedResponseWrapper(response);
 
-        Request requestInput = new Request();
-        requestInput.setMethod(request.getMethod());
-        requestInput.setUrl(getFullURL(request));
-        requestInput.setParameters(requestMap);
-        requestInput.setBody(bufferedRequest.getRequestBody());
+        Request requestInput;
+        requestInput = Request.builder().method(request.getMethod()).url(getFullURL(request)).parameters(requestMap).body(bufferedRequest.getRequestBody()).build();
 
         filterChain.doFilter(bufferedRequest, bufferedResponse);
 
